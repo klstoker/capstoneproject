@@ -1,0 +1,115 @@
+﻿@model DetailMasterModel
+@{
+    int numOfDaysToDisplay = 5;
+    List<WeatherModel> fiveDayForecast = Model.FiveDayForecast;
+    int workingHigh;
+    int workingLow;
+    char tempSign;
+}
+@{
+    if (fiveDayForecast != null && fiveDayForecast.Count >= numOfDaysToDisplay)
+    {
+
+        string formattedForecast = fiveDayForecast[0].Forecast.ToLower();
+        string snowMessage = "Please pack snow shoes";
+        bool isSnowing = formattedForecast == "snow";
+
+        string rainMessage = "Pack rain gear and waterproof shoes";
+        bool isRaining = formattedForecast == "rain" || fiveDayForecast[0].Forecast == "thunderstorms";
+
+        string thunderstormMessage = "Seek shelter and avoid exposed ridges";
+        bool isThunderStorming = formattedForecast == "thunderstorms";
+
+        string sunMessage = "Pack sunblock!";
+        bool isSunny = formattedForecast == "sunny";
+
+        string hotTempMessage = "You'll need an extra gallon of water! :)";
+        bool isHot = fiveDayForecast[0].High >= 75;
+
+        string varyingTempsMessage = "Wear breathable layers if you got them";
+        bool isVaryingTemp = Math.Abs(fiveDayForecast[0].High - fiveDayForecast[0].Low) > 20;
+
+        string coldTempMessage = "Beware the dangers of exposure and frigid temperatures!";
+        bool isCold = fiveDayForecast[0].Low < 20;
+
+<div>
+    <div><h1 class="home five">Five Day Forecast:</h1></div>
+    <div class="toggle">
+        <a class="link" href="~/home/toggletemp/?ParkCode=@Model.MyPark.ParkCode">Click here to toggle between Celcius and Farenheit!</a>
+
+    </div>
+</div>
+        <div class="weather home">
+            @{
+                string imageWeather = fiveDayForecast[0].Forecast + ".png";
+                workingHigh = fiveDayForecast[0].High;
+                workingLow = fiveDayForecast[0].Low;
+                tempSign = 'F';
+                if (Model.IsCelsius)
+                {
+                    workingHigh = (workingHigh - 32) * 5 / 9;
+                    workingLow = (workingLow - 32) * 5 / 9;
+                    tempSign = 'C';
+                }
+            }
+            <div class="today">
+                <div><img class="weatherpic" src="~/images/@imageWeather" /></div>
+                <h4>@DateTime.Now.ToString("dddd, dd MMMM yyyy")</h4>
+                <div>High @workingHigh° @tempSign</div>
+                <div>Low @workingLow° @tempSign</div>
+                @{
+                    if (isSnowing)
+                    {
+                        <div>@snowMessage</div>
+                    }
+                    if (isRaining)
+                    {
+                        <div>@rainMessage</div>
+                    }
+                    if (isThunderStorming)
+                    {
+                        <div>@thunderstormMessage</div>
+                    }
+                    if (isSunny)
+                    {
+                        <div>@sunMessage</div>
+                    }
+                    if (isHot)
+                    {
+                        <div>@hotTempMessage</div>
+                    }
+                    if (isVaryingTemp)
+                    {
+                        <div>@varyingTempsMessage</div>
+                    }
+                    if (isCold)
+                    {
+                        <div>@coldTempMessage</div>
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="forecast home">
+            @{
+                for (int i = 1; i < fiveDayForecast.Count; i++)
+                {
+                    imageWeather = fiveDayForecast[i].Forecast + ".png";
+                    workingHigh = fiveDayForecast[i].High;
+                    workingLow = fiveDayForecast[i].Low;
+                    if (Model.IsCelsius)
+                    {
+                        workingHigh = (workingHigh - 32) * 5 / 9;
+                        workingLow = (workingLow - 32) * 5 / 9;
+                    }
+                    <div class="forecast days">
+                        <div><img class="weather5pic" src="~/images/@imageWeather" /></div>
+                        <div>@DateTime.Now.AddDays(i).ToString("dddd, dd MMMM yyyy")</div>
+                        <div>High: @workingHigh° @tempSign</div>
+                        <div>Low: @workingLow° @tempSign</div>
+                    </div>
+                }
+            }
+        </div>
+    }
+}

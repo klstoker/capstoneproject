@@ -1,0 +1,27 @@
+﻿@model List<ParkModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1 class="heading">National Parks</h1>
+
+<section class="home">
+    <div>
+        @foreach (ParkModel park in Model)
+        {
+            <table>
+                <tr>
+                    @{
+                        string imageName = park.ParkCode.ToLower() + ".jpg";
+                            }
+                    <td><img class="picture"src="~/images/@imageName" /></td>
+                    <td class="info">
+                        <h2 class="parkName">@park.ParkName</h2>
+                        <p><i>@park.State</i></p>
+                        <p>@park.ParkDescription</p>
+                        <a class="link" href="~/home/Details?ParkCode=@park.ParkCode">Click Here to Learn More</a>
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+</section>

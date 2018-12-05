@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Results";
+}
+@model List<ParkModel>
+
+<h1 class="survey heading">Favorite Park Survey Results</h1>
+
+<section>
+    <div class="survey">
+        @foreach (ParkModel park in Model)
+        {
+            <table>
+                @{string imageName = park.ParkCode.ToLower() + ".jpg";
+
+                    <tr>
+                        <td><img class="picture" src="~/images/@imageName" /></td>
+                        <td class="info">
+                            <h2 class="five">@park.ParkName</h2>
+                            <p>@park.ParkDescription</p>
+                            <p>Number of votes: @park.NumberOfSurveys</p>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+    </div>
+</section>

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model SurveyModel
+
+<h1 class="survey heading">Daily Survey</h1>
+
+
+
+<div>
+
+    <form asp-controller="survey" asp-action="results" method="post">
+        <div>
+            <label class="Column ColumnOne survey" asp-for="ParkCode">Your favorite park</label>
+            <select asp-for="ParkCode" asp-items="@Model.ParkChoices" required></select>
+            <span asp-validation-for="ParkCode"></span>
+        </div>
+        <div>
+            <label class="Column ColumnOne survey" asp-for="EmailAddress">Your email</label>
+            <input asp-for="EmailAddress" type="email" required />
+            <span asp-validation-for="EmailAddress"></span>
+        </div>
+        <div>
+            <label class="Column ColumnOne survey" asp-for="State">State of Residence</label>
+            <select asp-for="State" asp-items="@Model.StateChoices" required ></select>
+            <span asp-validation-for="State"></span>
+        </div>
+        <div>
+            <label class="Column ColumnOne survey" asp-for="ActivityLevel">Activity Level</label>
+            <select asp-for="ActivityLevel" asp-items="@Model.ActivityLevelChoices" required></select>
+            <span asp-validation-for="ActivityLevelChoices"></span>
+        </div>
+
+        <input class="Column" type="submit" value="Submit" />
+</form>
+
+
+
+
+</div>
+

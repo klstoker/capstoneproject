@@ -1,0 +1,154 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    background-color: #0094ff;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+
+.picture{
+    border-radius: 20px;
+    border-color: white;
+    border-width: 5px;
+    padding: 20px;
+    border-style:solid;
+    width: 350px;
+    height: 350px;
+    margin: 15px;
+}
+
+.parkName {
+    color: white;
+    text-shadow: 4px 4px black;
+}
+.home {
+    color: white;
+}
+.five {
+    text-shadow: 4px 4px black;
+}
+.link {
+    color: white;
+    font-family: Courier New, Courier, monospace;
+    font-style: italic;
+}
+.heading {
+    color: white;
+    text-align: center;
+    text-shadow: 100px;
+    font-weight: 700;
+    text-shadow: 4px 4px black;
+}
+
+div {
+
+}
+.info{
+    text-align:center;
+}
+.details{
+    text-align: center;
+    padding-top: 50px;
+    color: white;
+}
+.detailsPicture {
+    border-radius: 20px;
+    border-color: white;
+    border-width: 5px;
+    padding: 20px;
+    border-style: solid;
+}
+.quote{
+    font-family: Courier New, Courier, monospace;
+    font-style:italic;
+    color: white;
+    font-size:larger;
+}
+.quoteby {
+    font-family: Courier New, Courier, monospace;
+    font-style: italic;
+    color: white;
+}
+.Column {
+    display: inline-block;
+    margin-left: 3%;
+}
+
+.ColumnOne {
+    width: 20%;
+}
+.survey{
+    color: white;
+}
+.heading {
+    text-align: center;
+    text-shadow: 4px 4px black;
+}
+.weatherpic{
+    border-radius: 20px;
+}
+.weather5pic{
+    border-radius:20px;
+    width: 100px;
+    height: 100px;
+}
+.weather{
+    display: inline-block;
+    padding-top: 15px;
+}
+.today {
+    padding-left: 20px;
+    text-align: center;
+}
+.forecast {
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+.headpic{
+    height:125px;
+    width: 450px;
+}
+.days{
+    padding: 15px;
+}
+.toggle {
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    width:300px;
+    height: 50px;
+    text-align: center;
+}

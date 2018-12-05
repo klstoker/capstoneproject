@@ -1,0 +1,35 @@
+﻿@model DetailMasterModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<section class="details">
+    @{
+        string imageName = Model.MyPark.ParkCode.ToLower() + ".jpg";
+    }
+    <h1 class="five">@Model.MyPark.ParkName</h1>
+    <div><img class="detailsPicture"src="~/images/@imageName" /></div>
+    <div class="quote">@Model.MyPark.InspirationalQuote</div>
+    <div class="quoteby">- @Model.MyPark.InspirationalQuoteSource</div>
+    <div><h2 class="parkName">@Model.MyPark.ParkName</h2>(@Model.MyPark.ParkCode)</div>
+    <div><b>Located in: </b>@Model.MyPark.State</div>
+    <div><b>Founded in: </b>@Model.MyPark.YearFounded</div>
+    <div><b>Entry Fee:</b> $@Model.MyPark.EntryFee </div>
+    <div><b>Miles of Trail:</b> @Model.MyPark.MilesOfTrail</div>
+    <div><b>Elevation:</b> @Model.MyPark.ElevationInFeet ft</div>
+    <div><b>Acreage:</b> @Model.MyPark.Acreage</div>
+    <div><b>Number of Campsites: </b>@Model.MyPark.NumberOfCampsites </div>
+    <div><b>Annual Visitors:</b> @Model.MyPark.AnnualVisitorCount</div>
+    <div><b>Climate Type:</b> @Model.MyPark.Climate </div>
+    <div><b>Number of Animal Species:</b> @Model.MyPark.NumberOfAnimalSpecies</div>
+    <div><p>@Model.MyPark.ParkDescription</p></div>
+</section>
+
+
+@*put partial view for weather here*@
+
+
+<partial name="_Weather5DayForecast.cshtml" model="Model" />
+
+
+
